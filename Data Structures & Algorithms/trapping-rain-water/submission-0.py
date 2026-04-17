@@ -1,0 +1,19 @@
+class Solution:
+    def trap(self, h: List[int]) -> int:
+        l = 0
+        r = len(h)-1
+        leftMax = h[l]
+        rightMax = h[r]
+        res = 0
+
+        while l<r:
+            if leftMax < rightMax:
+                 l += 1
+                 leftMax = max(leftMax,h[l])
+                 res += leftMax - h[l] 
+            else:
+                r -= 1
+                rightMax = max(rightMax,h[r])
+                res += rightMax - h[r]
+
+        return res
